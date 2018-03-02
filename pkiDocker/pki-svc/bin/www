@@ -1,0 +1,48 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+var ssl = require('../ssl');
+var app = require('../app');
+var debug = require('debug')('pki-svc:server');
+var http = require('http');
+var https = require('https');
+
+/**
+ * Create https server
+ */
+
+
+app.set('httpsport', 443);
+var httpsServer = https.createServer(ssl.options, app).listen(app.get('httpsport'));
+httpsServer.on('error', onError);
+
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe 443'
+    : 'Port 443';
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}

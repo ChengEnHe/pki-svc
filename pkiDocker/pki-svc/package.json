@@ -1,0 +1,27 @@
+{
+  "name": "pki-svc",
+  "description": "For build pki service",
+  "version": "0.0.1",
+  "private": true,
+  "author": {
+    "name": "Gemtek"
+  },
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "crypto-js": "*",
+    "debug": "~2.6.9",
+    "dotenv": "~1.2.0",
+    "express": "~4.15.5",
+    "https": "^1.0.0",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.0",
+    "mysql2": "^1.5.2",
+    "request": "*",
+    "sequelize": "^4.33.4",
+    "serve-favicon": "~2.4.5"
+  }
+}
